@@ -34,13 +34,14 @@ server.on('listening', onListening);
  */
 
 const { Server } = require("socket.io");
-//const users = {};
+const users = {};
 
-//const socketToRoom = {};
+const socketToRoom = {};
 
 const io = new Server(server,{
   cors:{
-    origin: 'https://app-ruscello.vercel.app/',
+    origin: '*',
+    methods: ["GET", "POST"]
   }
 });
 
