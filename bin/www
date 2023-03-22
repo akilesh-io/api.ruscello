@@ -40,7 +40,7 @@ const { Server } = require("socket.io");
 
 const io = new Server(server,{
   cors:{
-    origin: 'https://ruscello-api-ecfbf.ondigitalocean.app/',
+    origin: 'https://app-ruscello.vercel.app/',
   }
 });
 

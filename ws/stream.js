@@ -1,13 +1,3 @@
-var express = require('express');
-
-var app = express();
-
-app.get('/stream', (req, res) => {
-    res.json({
-        message: 'Stream works',
-    });
-});
-
 const stream = ( socket ) => {
     socket.on( 'subscribe', ( data ) => {
         //subscribe/join a room
