@@ -32,14 +32,13 @@ server.on( 'listening', onListening );
  * Socket.io establish connect
  */
 
-
-
 socketapi.io.attach( server, {
   cors: {
     origin: '*',
-    methods: [ "GET", "POST" ]
+    methods: [ "GET", "POST" ],
+    credentials: true
   },
-  pingTimeout: 60000
+  pingTimeout: 60000,
 } ); // <== Also add this line
 
 // const users = {};

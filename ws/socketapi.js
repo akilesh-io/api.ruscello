@@ -9,7 +9,7 @@ const socketapi = {
 };
 
 const onConnection = (socket) => {
-    registerTextHandler(io, socket)
+    stream( socket)
     videoCall(io, socket)
 }
 
