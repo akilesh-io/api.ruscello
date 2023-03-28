@@ -1,4 +1,4 @@
-var stream = require( './stream' );
+//var stream = require( './stream' );
 var registerTextHandler = require( './text' );
 
 const videoCall = require( './videoCall' );
@@ -9,8 +9,9 @@ const socketapi = {
 };
 
 const onConnection = (socket) => {
-    stream( socket)
+    //stream( socket)
     videoCall(io, socket)
+    registerTextHandler( socket)
 }
 
 // Add your socket.io logic here!
@@ -20,7 +21,7 @@ const onConnection = (socket) => {
 
 // end of socket.io logic
 io.on("connection", onConnection);
-io.of( '/text' ).on( 'connection', registerTextHandler );
+//io.of( '/text' ).on( 'connection', registerTextHandler );
 //io.of( '/call' ).on( 'connection', videoCall );
 
 module.exports = socketapi;

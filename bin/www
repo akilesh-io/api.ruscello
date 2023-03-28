@@ -36,7 +36,6 @@ socketapi.io.attach( server, {
   cors: {
     origin: '*',
     methods: [ "GET", "POST" ],
-    credentials: true
   },
   pingTimeout: 60000,
 } ); // <== Also add this line
