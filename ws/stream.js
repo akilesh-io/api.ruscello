@@ -34,7 +34,6 @@ const stream = ( socket ) =>
   {
     console.log( '🔥: A user disconnected' );
     //Sends the list of users to the client
-    socket.emit( 'newUserResponse', users );
     socket.disconnect();
   } );
 };
