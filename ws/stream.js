@@ -33,9 +33,6 @@ const stream = ( socket ) =>
   socket.on( 'disconnect', () =>
   {
     console.log( '🔥: A user disconnected' );
-    //Updates the list of users when a user disconnects from the server
-    users = users.filter( ( user ) => user.socket !== socket.id );
-    // console.log(users);
     //Sends the list of users to the client
     socket.emit( 'newUserResponse', users );
     socket.disconnect();
