@@ -1,17 +1,17 @@
-//var stream = require( './stream' );
-var registerTextHandler = require( './text' );
+var stream = require( './stream' );
 
-const videoCall = require( './videoCall' );
+//var registerTextHandler = require( './text' );
+//const videoCall = require( './videoCall' );
 
 const io = require( "socket.io" )();
 const socketapi = {
     io: io
 };
 
-const onConnection = (socket) => {
-    //stream( socket)
-    videoCall(io, socket)
-    registerTextHandler( socket)
+const onConnection = (socket, io) => {
+    stream( socket, io)
+    //videoCall(io, socket)
+    //registerTextHandler( socket)
 }
 
 // Add your socket.io logic here!
