@@ -4,6 +4,8 @@ const stream = ( socket ) =>
   {
     //user/join a room
     socket.join( data.room );
+    console.log( '✨: A user join' );
+
     //socket.join( data.socketId );
     //console.log("🚀 ~ file: stream.js:9 ~ socket.on ~ data.socketId:", data.socketId)
 
