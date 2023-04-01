@@ -32,6 +32,36 @@ const stream = ( socket ) =>
     socket.broadcast.to( data.room ).emit( 'updatePlayPause', playPause );
   } );
 
+
+  // For Youtube
+  socket.on( "room-video-id", ( videoId, data ) =>
+  {
+    socket.broadcast.to( data.room ).emit( "room-video-id", videoId );
+  } );
+
+  socket.on( "update-server-time", ( playerCurrentTimem, data ) =>
+  {
+    socket.broadcast.to( data.room ).emit( "update-server-time", Math.trunc(parseFloat(playerCurrentTimem)) );
+    console.log( `update-server-time: ${ Math.trunc(parseFloat(playerCurrentTimem)) }` );
+  } );
+
+  socket.on( "set-player-status", ( playerState, data ) =>
+  {
+    socket.broadcast
+      .to( data.room )
+      .emit( "set-player-status", playerState );
+  } );
+
+
+  socket.on( "set-player-current-time", ( playerCurrentTime, data ) =>
+  {
+    console.log( `set-player-current-time: ${ currentPlayerTime }` );
+    socket.broadcast
+      .to( data.room )
+      .emit( "set-player-current-time", playerCurrentTime );
+  } );
+
+
   socket.on( 'disconnect', () =>
   {
     console.log( '🔥: A user disconnected' );
