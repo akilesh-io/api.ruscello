@@ -32,6 +32,11 @@ const stream = ( socket ) =>
     socket.broadcast.to( data.room ).emit( 'updatePlayPause', playPause );
   } );
 
+  // For Youtube
+  socket.on( "room-video-id", ( videoId, data ) =>
+  {
+    socket.broadcast.to( data.room ).emit( "room-video-id", videoId );
+  } );
 
   socket.on( 'disconnect', () =>
   {
