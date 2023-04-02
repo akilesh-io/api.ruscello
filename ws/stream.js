@@ -24,7 +24,6 @@ const stream = ( socket ) =>
   socket.on( 'videoSeek', ( videoState, data ) =>
   {
     socket.broadcast.to( data.room ).emit( 'updateSeek', videoState );
-    console.log("🚀 ~ file: stream.js:27 ~ videoState:", videoState)
   } );
 
 
@@ -37,6 +36,7 @@ const stream = ( socket ) =>
   socket.on( "room-video-id", ( videoId, data ) =>
   {
     socket.broadcast.to( data.room ).emit( "room-video-id", videoId );
+    console.log("🚀 videoId:", videoId)
   } );
 
   socket.on( 'disconnect', () =>
