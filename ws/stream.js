@@ -24,6 +24,7 @@ const stream = ( socket ) =>
   socket.on( 'videoSeek', ( videoState, data ) =>
   {
     socket.broadcast.to( data.room ).emit( 'updateSeek', videoState );
+    console.log("🚀 ~ file: stream.js:27 ~ videoState:", videoState)
   } );
 
 
