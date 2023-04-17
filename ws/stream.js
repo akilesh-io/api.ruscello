@@ -16,6 +16,15 @@ const stream = ( socket ) =>
     }
   } );
 
+  socket.on('joinUser', (room , userId ) => {
+
+    socket.broadcast.to( room ).emit( 'user-connected', userId );
+
+    socket.on('disconnect', () => {
+      socket.broadcast.to( room ).emit( 'user-disconnected', userId );
+    })
+  });
+
   socket.on( "createdMessage", ( msg ) =>
   {
     socket.broadcast.emit( "newIncomingMessage", msg );
@@ -44,6 +53,7 @@ const stream = ( socket ) =>
     console.log( '🔥: A user disconnected' );
     //Sends the list of users to the client
     socket.disconnect();
+    
   } );
 };
 
