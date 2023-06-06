@@ -10,7 +10,7 @@ var app = express();
 const server = require( 'http' ).createServer( app );
 
 const peerServer = ExpressPeerServer( server, {
-    path: "/myapp",
+    path: "/",
 } );
 
 
