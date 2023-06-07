@@ -3,17 +3,21 @@ var express = require( 'express' );
 var path = require( 'path' );
 var cookieParser = require( 'cookie-parser' );
 var logger = require( 'morgan' );
+const { ExpressPeerServer } = require("peer");
 
 var indexRouter = require( './routes/index' );
 var usersRouter = require( './routes/users' );
-var peerServer = require( './routes/peer' );
-
+//var peerServer = require( './routes/peer' );
 var socketapi = require( "./ws/socketapi" );
 
 const cors = require( 'cors' );
-
 var app = express();
 
+const server = app.listen(9000);
+
+const peerServer = ExpressPeerServer(server, {
+	path: "/",
+});
 
 // view engine setup
 app.set( 'views', path.join( __dirname, 'views' ) );

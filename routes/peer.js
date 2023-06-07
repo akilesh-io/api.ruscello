@@ -1,5 +1,5 @@
-const { ExpressPeerServer } = require( "peer" );
 const express = require( 'express' );
+const { ExpressPeerServer } = require( "peer" );
 
 var app = express();
 
@@ -10,7 +10,10 @@ var app = express();
 const server = require( 'http' ).createServer( app );
 
 const peerServer = ExpressPeerServer( server, {
-    path: "/",
+    proxied: true,
+    debug: true,
+    path: "/myapp",
+    ssl: {},
 } );
 
 
