@@ -41,6 +41,20 @@ const stream = ( socket ) =>
     socket.broadcast.to( data.room ).emit( 'updatePlayPause', playPause );
   } );
 
+
+  // to sync the video
+  socket.on( 'syncVideo', ( videoState, data ) =>
+  {
+    socket.broadcast.to( data.room ).emit( 'updateVideo', videoState );
+  } );
+  
+
+  // For video 10 sec leep and back
+  socket.on('Winds', ( videoState, data ) =>
+  {
+    socket.broadcast.to( data.room ).emit( 'updateWinds', videoState );
+  } );
+
   // For Youtube
   socket.on( "room-video-id", ( videoId, data ) =>
   {
@@ -52,8 +66,7 @@ const stream = ( socket ) =>
   {
     console.log( '🔥: A user disconnected' );
     //Sends the list of users to the client
-    socket.disconnect();
-    
+    socket.disconnect();    
   } );
 };
 
