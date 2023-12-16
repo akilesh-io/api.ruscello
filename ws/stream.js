@@ -65,6 +65,7 @@ const stream = ( socket ) =>
   socket.on( 'disconnect', () =>
   {
     console.log( '🔥: A user disconnected' );
+    socket.to( data.room ).emit( 'user-disconnected', data.socketId );
     //Sends the list of users to the client
     socket.disconnect();    
   } );
